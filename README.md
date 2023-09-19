@@ -7,6 +7,12 @@
  Wouldn't it be great to have a free, progress tracking service for all your weightlifting needs? In times of old, weightlifters would track their workouts and progress using a notepad and pencil. Nowadays, many lifters use apps from companies like **[Bodybuilding.com](https://www.bodybuilding.com/)** but these often include hefty price tags or a monthly subscription. Additionally most fitness tracking apps offer very little to no customization or progress tracking capabilities. This fitness app allows you to update things like your personal weight, successful reps at different weights which are automatically synced with a database which allows you to clearly see your fitness progress over time within the application. 
 
  ### Design
+![unnamed](https://github.com/jrsorensen/cs-260-Fall-2023/assets/100975246/574c566f-60bb-4697-9e7e-a6e355b23ff4)
+
+![unnamed](https://github.com/jrsorensen/cs-260-Fall-2023/assets/100975246/1020765d-d3fb-4aed-884e-c06df5651169)
+
+![unnamed](https://github.com/jrsorensen/cs-260-Fall-2023/assets/100975246/c77c6b58-64cb-4623-af8f-c83b99c9b730)
+
 
  ### Key Features
  + Secure Login over https
