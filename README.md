@@ -33,5 +33,5 @@
   + saving current weight and not information
 + **DB** - Stores users weights, notes, and login information
 + **Login** - Register and login users. Registration information is stored in database. Unable to proceed to workout until credentials are validated
-+ **WebSocket** - When the application is opened an inspirational image and quote are displayed automatically
++ **WebSocket** - The websocket will be used to communicate to other users when someone has started a new workout. A notification will pop up on other users' screens displaying the original user's username in a message indicating that they are now working out.
 + **React** - The appliation is ported to use the React web framework
