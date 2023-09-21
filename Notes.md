@@ -29,3 +29,24 @@ Each service, when it starts up, is given a specific port to run on. We need an 
 ## Serverless
 The idea of microservices naturally evolved into the world of serverless functionality where the server is conceptually removed from the architecture and you just write a function that speaks HTTP. That function is loaded through an gateway that maps a web request to the function. The gateway automatically scales the hardware needed to host the serverless function based on demand. This reduces what the web application developer needs to think about down to a single independent function.
 
+# Domain names
++ Just a way of having human friendly IP addresses
++ One domain name can have multiple IP addresses for redundancy
++ They are listed ina  special database called the domain name registry
++ There are two parts to a domain name
+   + Root
+     + represented by a secondary level domain and a top level domain.
+       + Top level domain (TLD) represents thing like come, edu, click, net.
+       + The possible lists of these is controlled by ICANN, an internet governing board
+  + Subdomains
+    + May resolve to different IP addresses.
++ Get info about domain names using the `whois` command ie `whois byu.edu`
+
+## DNS
+The DNS database records that facilitate the mapping of domain names to IP addresses come in several flavors. The main ones we are concerned with are the address (A) and the canonical name (CNAME) records. An A record is a straight mapping from a domain name to IP address. A CNAME record maps one domain name to another domain name. This acts as a domain name alias. You would use a CNAME to do things like map byu.com to the same IP address as byu.edu so that either one could be used.
+
+When you enter a domain name into a browser, the browser first checks to see if it has the name already in its cache of names. If it does not, it contacts a DNS server and gets the IP address. The DNS server also keeps a cache of names. If the domain name is not in the cache, it will request the name from an authoritative name server. If the authority does not know the name then you get an unknown domain name error. If the process does resolve, then the browser makes the HTTP connection to the associated IP address.
+
+The time to live (TTL)
++ You can set this to be something short like 5 minutes or as long as several days.
++ The different caching layers should then honor the TTL and clear their cache after the requested period has passed.
