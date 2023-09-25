@@ -5,3 +5,48 @@
   + how to indent
   + that you can make links to other pages like **[my readMe page](/README.md)**
   + [MarkDown syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#relative-links)
+  + To ssh into my server I do this `ssh -i [key pair file] ubuntu@[ip address]` and to exit I `exit`
+
+# Internet
+## Making connections
+Domain names are converted to IP address by doing a lookup in the Domain Name System (DNS). You can look up the IP address for any domain name using the dig console utility.
+Once you have the IP address, you connect to the device it represents by first asking for a connection route to the device. This is done dynamically. You can determine the hops in a connection using the traceroute console utility. If I run traceroute again I might see a slightly different route since every connection through the internet is dynamically calculated. The ability to discover a route makes the internet resilient when network devices fail or disappear from the network.
+
+## Network internals
+The actual sending of data across the internet uses the TCP/IP model. This is a layered architecture that covers everything from the physical wires to the data that a web application sends. At the top of the TCP/IP protocol is the application layer. It represents user functionality, such as the web (HTTP), mail (SMTP), files (FTP), remote shell (SSH), and chat (IRC). Underneath that is the transport layer which breaks the application layer's information into small chunks and sends the data. The actual connection is made using the internet layer. This finds the device you want to talk to and keeps the connection alive. Finally, at the bottom of the model is the link layer which deals with the physical connections and hardware.
+
+# Web servers
+A web server is a computing device that is hosting a web service that knows how to accept incoming internet connections and speak the HTTP application protocol.
+
+## Web service gateways
+Each service, when it starts up, is given a specific port to run on. We need an easy way of connecting to the right port for the right service. It would be combersum to keep track of all of that so we have gateways or sometimes called a reverse proxy, that is itself a simple web service that listens on the common HTTPS port 443. The gateway then looks at the request and maps it to the other services running on a different ports.
+
+## Microservices 
+  + Provide a single function
+  + Are easy to work on because they can be developed and changed independently of other program functionality
+  + Are easily scalable
+
+## Serverless
+The idea of microservices naturally evolved into the world of serverless functionality where the server is conceptually removed from the architecture and you just write a function that speaks HTTP. That function is loaded through an gateway that maps a web request to the function. The gateway automatically scales the hardware needed to host the serverless function based on demand. This reduces what the web application developer needs to think about down to a single independent function.
+
+# Domain names
++ Just a way of having human friendly IP addresses
++ One domain name can have multiple IP addresses for redundancy
++ They are listed ina  special database called the domain name registry
++ There are two parts to a domain name
+   + Root
+     + represented by a secondary level domain and a top level domain.
+       + Top level domain (TLD) represents thing like come, edu, click, net.
+       + The possible lists of these is controlled by ICANN, an internet governing board
+  + Subdomains
+    + May resolve to different IP addresses.
++ Get info about domain names using the `whois` command ie `whois byu.edu`
+
+## DNS
+The DNS database records that facilitate the mapping of domain names to IP addresses come in several flavors. The main ones we are concerned with are the address (A) and the canonical name (CNAME) records. An A record is a straight mapping from a domain name to IP address. A CNAME record maps one domain name to another domain name. This acts as a domain name alias. You would use a CNAME to do things like map byu.com to the same IP address as byu.edu so that either one could be used.
+
+When you enter a domain name into a browser, the browser first checks to see if it has the name already in its cache of names. If it does not, it contacts a DNS server and gets the IP address. The DNS server also keeps a cache of names. If the domain name is not in the cache, it will request the name from an authoritative name server. If the authority does not know the name then you get an unknown domain name error. If the process does resolve, then the browser makes the HTTP connection to the associated IP address.
+
+The time to live (TTL)
++ You can set this to be something short like 5 minutes or as long as several days.
++ The different caching layers should then honor the TTL and clear their cache after the requested period has passed.
