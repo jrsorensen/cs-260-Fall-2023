@@ -51,3 +51,39 @@ When you enter a domain name into a browser, the browser first checks to see if 
 The time to live (TTL)
 + You can set this to be something short like 5 minutes or as long as several days.
 + The different caching layers should then honor the TTL and clear their cache after the requested period has passed.
++ 
+
+## HTML
+# Examples
+```html
+<p id="hello" class="greeting">Hello world</p>
+```
+```html
+<a href="https://byu.edu">Go to the Y</a>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <main>
+      <h1>Hello world</h1>
+      <p class="introduction">
+        HTML welcomes you to the amazing world of
+        <span class="topic">web programming</span>.
+      </p>
+      <p class="question">What will this mean to you?</p>
+      <p class="assignment">Learn more <a href="instruction.html">here</a>.</p>
+    </main>
+  </body>
+</html>
+```
+
+You can include comments in your HTML files by starting the comment with `<!--` and ending it with `-->`. Any text withing a comment block will be completely ignored when the browser renders it.
+
+```html
+<!-- commented text -->
+```
+
+## index.html
+
+By default a web server will display the HTML file named `index.html` when a web browser, such as Google Chrome, makes a request without asking for a specific HTML file. For example, when you ask for `https://google.com` in your web browser you will actually get back the HTML for the file `https://google.com/index.html`. For this reason, it is very common to name the main HTML file for your web application `index.html`.
