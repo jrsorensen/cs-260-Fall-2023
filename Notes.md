@@ -96,6 +96,8 @@ To include an audio file in your content you use the audio element and specify t
 
 To include a video in your content you use the video element and specify the src attribute with the URL to the source video. Like the audio element you can include the controls or autoplay attributes.
 ⚠ Note that you may need to include the crossorigin="anonymous" attribute if you are requesting files from a different domain than the one serving your content. 
-```<video controls width="300" crossorigin="anonymous">
+```
+<video controls width="300" crossorigin="anonymous">
   <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
-</video>```
+</video>
+```
