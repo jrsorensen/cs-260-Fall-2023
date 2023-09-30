@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "simon-html-1",
+			"path": "../../SimonExample/simon-html-1"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "simon-html-1"
+	}
+}
