@@ -36,18 +36,24 @@
 <html>
 <body>
     <header>
-        <form style="height: 30px">
-            <input type="button" value="Monday" style= "width: 10%; height:30px; background-color: #17ad37;" >
-            <input type="button" value="Tuesday"  style= "width: 10%; height:100%; background-color: #17ad37;" >
-            <input type="button" value="Wednesday"  style= "width: 10%; height:100%; background-color: #17ad37;">
-            <input type="button" value="Thursday"  style= "width: 10%; height:100%; background-color: #17ad37;">
-            <input type="button" value="Friday"  style= "width: 10%; height:100%; background-color: #17ad37;">
-            <input type="button" value="Saturday"  style= "width: 10%; height:100%; background-color: #17ad37;">
-            <select id="pages" name="pages" style="float: right; width:10%; height:100%; background-color: #17ad37;">
-                <option value="progress">Progress</option>
-                <option value="logout">Log out</option>
-            </select>
-        </form>
+        <div style="height: 30px">
+            <!--Each of the buttons will have an onclick that will implement javascript to change the value of the day-label, warm-up value and exercise labels-->
+            <!--so essentailly this is a place holder to indicate the presence of javascript communicating with a database-->
+            <button name="monday" onclick="" style= "width: 10%; height:30px; background-color: #17ad37;">Monday</button>
+            <button name="tuesday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;" >Tuesday</button>
+            <button name="wednesday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Wednesday</button>
+            <button name="thursday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Thursday</button>
+            <button name="friday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Friday</button>
+            <button name="saturday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Saturday</button>
+
+            <button type="submit" onclick="location.href='/index.html';" style= "float: right; width: 10%; height:100%; background-color: #17ad37;">Log out</button>
+            <button type="submit" onclick="location.href='/progress.html';" style= "float: right; width: 10%; height:100%; background-color: #17ad37;">Progress</button>
+
+            <!--<select id="pages" name="pages" style="float: right; width:10%; height:100%; background-color: #17ad37;">
+                <option value="progress" onclick="">Progress</option>
+                <option value="logout" onclick="">Log out</option>
+            </select>-->
+        </div>
     </header>
     <main>
         <h1 style="text-align: center; font-size: 700%;" class="day-label">Chest</h1>
@@ -219,6 +225,8 @@
                 </span>
 
             </form>
+            <!--this is indicating a placeholder where, when the submit button is checked, will send data to the database-->
+            <button type="submit" onclick="" style="background-color: lightgreen; font-size: larger;">Log workout</button>
         </div>
     </main>
     <footer>

@@ -19,10 +19,51 @@
 <html>
 <body>
     <header>
-        <form type=""></form>
+        <div style="height: 30px">
+            <!--Each of the buttons will have an onclick that will implement javascript to change the value of the day-label, warm-up value and exercise labels-->
+            <!--so essentailly this is a place holder to indicate the presence of javascript communicating with a database-->
+            <button name="monday" onclick="" style= "width: 10%; height:30px; background-color: #17ad37;">Monday</button>
+            <button name="tuesday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;" >Tuesday</button>
+            <button name="wednesday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Wednesday</button>
+            <button name="thursday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Thursday</button>
+            <button name="friday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Friday</button>
+            <button name="saturday" onclick="" style= "width: 10%; height:100%; background-color: #17ad37;">Saturday</button>
+
+            <button type="submit" onclick="location.href='/index.html';" style= "float: right; width: 10%; height:100%; background-color: #17ad37;">Log out</button>
+            <button type="submit" onclick="location.href='/workout.html';" style= "float: right; width: 10%; height:100%; background-color: #17ad37;">Workout</button>
+
+            <!--<select id="pages" name="pages" style="float: right; width:10%; height:100%; background-color: #17ad37;">
+                <option value="progress" onclick="">Progress</option>
+                <option value="logout" onclick="">Log out</option>
+            </select>-->
+        </div>
     </header>
     <main>
-
+        <h1 style="text-align: center; font-size: 700%;" class="day-label">Progress</h1>
+        <div>
+            <label for="userweight">Your Weight</label><br>
+            <img src="https://th.bing.com/th/id/OIP.r0jVfIiUXQdABeF466jBYgHaEK?w=192&h=91&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Your weight graph">
+        </div>
+        <div>
+            <label for="chest-day">Chest Day</label><br>
+            <img src="https://th.bing.com/th/id/OIP.r0jVfIiUXQdABeF466jBYgHaEK?w=192&h=91&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Your weight graph">
+        </div>
+        <div>
+            <label for="leg-day">Leg Day</label><br>
+            <img src="https://th.bing.com/th/id/OIP.r0jVfIiUXQdABeF466jBYgHaEK?w=192&h=91&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Your weight graph">
+        </div>
+        <div>
+            <label for="back-day">Back Day</label><br>
+            <img src="https://th.bing.com/th/id/OIP.r0jVfIiUXQdABeF466jBYgHaEK?w=192&h=91&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Your weight graph">
+        </div>
+        <div>
+            <label for="back-day">Arm Day</label><br>
+            <img src="https://th.bing.com/th/id/OIP.r0jVfIiUXQdABeF466jBYgHaEK?w=192&h=91&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Your weight graph">
+        </div>
+        <div>
+            <label for="back-day">Core Day</label><br>
+            <img src="https://th.bing.com/th/id/OIP.r0jVfIiUXQdABeF466jBYgHaEK?w=192&h=91&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Your weight graph">
+        </div>
     </main>
     <footer>
         <h1>Workout page @CS 260</h1>
