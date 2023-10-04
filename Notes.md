@@ -101,3 +101,49 @@ To include a video in your content you use the video element and specify the src
   <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
 </video>
 ```
+
+# CSS
+Functionally, CSS is primarily concerned with defining rulesets, or simply rules. A rule is comprised of a selector that selects the elements to apply the rule to, and one or more declarations that represent the property to style with the given property value.
+
+## Associating CSS with HTML
+
+There are three ways that you can associate CSS with HTML. The first way is to use the `style` attribute of an HTML element and explicitly assign one or more declarations.
+
+```html
+<p style="color:green">CSS</p>
+```
+
+The next way to associate CSS is to use the HTML `style` element to define CSS rules within the HTML document. The `style` element should appear in the `head` element of the document so that the rules apply to all elements of the document.
+
+```html
+<head>
+  <style>
+    p {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <p>CSS</p>
+</body>
+```
+
+The final way to associate CSS is to use the HTML `link` element to create a hyperlink reference to an external file containing CSS rules. The `link` element must appear in the `head` element of the document.
+
+```html
+<link rel="stylesheet" href="styles.css" />
+```
+
+**styles.css**
+
+```css
+p {
+  color: green;
+}
+```
+
+All of the above examples are equivalent, but using the `link` element usually is the preferred way to define CSS. If multiple are applied to a single element the one sytactically closest to the element will be applied. 
+
+## The box model
+
+CSS defines everything as boxes. When you apply styles, you are applying them to a region of the display that is a rectangular box. Within an element's box there are several internal boxes. The innermost box holds the element's content. This is where things like the text or image of an element is displayed. Next comes the padding. The padding will inherit things like the background color. After padding is the border, which has properties like color, thickness and line style. The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace. It is important to understand each of these boxes so that you can achieve the desired visual result by applying the proper CSS declaration.
