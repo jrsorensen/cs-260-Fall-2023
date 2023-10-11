@@ -5,17 +5,44 @@ body{
     color:rgb(237,233,222)
 }
 header{
-    border:solid;
-    flex:0 8px
+  /*  display: flex;
+    flex-direction: column; */
+    flex:0 80px;
+}
+@media only screen and (max-width: 600px) {
+    .dayButtons{
+        display: inline-grid; grid-template-columns: max-content max-content max-content; max-width: 100%;
+    }
+    .navButtons{
+        display: inline-grid; grid-template-rows: max-content max-content; float: right
+    }
+}
+
+
+
+.dayButton{
+    float: left;
+    max-width:80px;
+    margin:0;
+    height:fit-content;
+    background-color: rgba(25, 174, 31);
+    text-overflow: clip;
+}
+.navigation{
+    float: right;
+    max-width: fit-content; 
+    height: fit-content;
+    background-color: rgba(25, 174, 31);
+}
+.submit{
+    background-color: lightgreen; font-size: larger;
 }
 main{
     flex:1;
     text-align: center;
+    align-items: center;
 }
-.navButton{ 
-    height:30px;
-    background-color: rgba(25, 174, 31);
-}
+
 footer{
     flex: 0 40px;
     text-align: center;

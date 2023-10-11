@@ -7,25 +7,28 @@
 <html>
 <body>
     <header>
-        <div style="height: 30px">
+       <!-- <div style="height: 30px" style="display:inline-grid"> -->
             <!--Each of the buttons will have an onclick that will implement javascript to change the value of the day-label, warm-up value and exercise labels-->
             <!--so essentailly this is a place holder to indicate the presence of javascript communicating with a database-->
-            <button class="navButton" name="monday" onclick="" >Monday</button>
-            <button class="navButton" name="tuesday" onclick=""  >Tuesday</button>
-            <button class="navButton" name="wednesday" onclick="" >Wednesday</button>
-            <button class="navButton" name="thursday" onclick="" >Thursday</button>
-            <button class="navButton" name="friday" onclick="" >Friday</button>
-            <button class="navButton" name="saturday" onclick="" >Saturday</button>
-
-            <button class="navButton" type="submit" onclick="location.href='/index.html';" style= "float: right;">Log out</button>
-            <button class="navButton" type="submit" onclick="location.href='/progress.html';" style= "float: right;">Progress</button>
-
+           <div class="dayButtons"> 
+            <button class="dayButton" onclick="location.href='/workout.html';">Monday</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Tuesday</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Wednesday</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Thursday</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Friday</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Saturday</button>
+           </div>
+            
+           <div class="navButtons"> 
+            <button type="submit" class="navigation" onclick="location.href='/index.html';">Log out</button>
+            <button type="sumbit" class="navigation" onclick="location.href='/progress.html';">Progress</button>
         </div>
+      <!--  </div> -->
     </header>
     <main>
         <h1  class="day-label">Chest</h1>
         <div>
-            <h2 class="day-label">Warm-up</h2>
+            <h2 class="warm-up">Warm-up</h2>
             <p>Jogging: 15 minutes</p>
         </div>
         <div>
@@ -193,7 +196,7 @@
 
             </form>
             <!--this is indicating a placeholder where, when the submit button is checked, will send data to the database-->
-            <button type="submit" onclick="" style="background-color: lightgreen; font-size: larger;">Log workout</button>
+            <button type="submit" class="submit" onclick="">Log workout</button>
         </div>
     </main>
     <footer>
