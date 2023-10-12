@@ -5,6 +5,7 @@ body{
     height:100vh;
     color:rgb(237,233,222);
     margin:0;
+    
 }
 
 header{
@@ -38,7 +39,7 @@ header{
 .navigation{
     color:rgba(237,233,222);
     float: right;
-    width:60px;
+    width:70px;
     margin-top:9px;
     border:none;
     padding:3px;
@@ -61,11 +62,16 @@ header{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+  .day-label{
+    width:100%;
+    text-align: center; 
+    font-size: 60px;
+    background-color: rgb(39, 112, 35);
+    margin-bottom: 50px;
+  }
 
   main{
     flex:1;
-    margin:auto;
-    width:50%;
 }
 
 .progress-graph{
@@ -85,7 +91,7 @@ footer{
     background-color: rgb(96, 160, 79);       
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 760px) {
     .dayButtons{
         display: inline-grid; 
         row-gap: 3px;
@@ -99,7 +105,7 @@ footer{
         
     }
 }
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 400px) {
     header{
         display: none;
     }
