@@ -43,7 +43,7 @@ header{
 .navigation{
     color:rgba(237,233,222);
     float: right;
-    width:60px;
+    width:70px;
     margin-top:9px;
     border:none;
     padding:3px;
@@ -67,23 +67,35 @@ header{
     transform: translateY(4px);
   }
 
-
 .exercise{
     margin-bottom: 15px;
      margin-top: 15px;
      
 }
 
-.exName{
+.exInfo{
     margin-right: 10px;
 }
 
 .set{
     margin-right:10px;
 }
+.exName{
+    display: inline-block; 
+    white-space: nowrap; 
+    width: 200px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+                    
+}
+
+.accordion{
+    background-color: rgba(96, 160, 79);
+}
 
 .submit{
     margin-top:50px;
+    margin-bottom: 15px;
     color:rgb(237,233,222);
     background-color: rgba(96, 160, 79); 
     font-size: larger;
@@ -110,16 +122,18 @@ main{
 
 footer{
     flex: 0 40px;
-    text-align: center;
-    background-color: rgba(25, 174, 31);    
+    text-align: center;   
     background-color: rgb(96, 160, 79);       
+}
+input[type='weight']{
+    width: 40px;
 }
 
 input[type='number']{
-width: 23px;
+width: 30px;
 } 
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 760px) {
     .dayButtons{
         display: inline-grid; 
         row-gap: 3px;
@@ -133,7 +147,39 @@ width: 23px;
         
     }
 }
-@media only screen and (max-width: 370px) {
+
+@media only screen and (max-width: 540px) {
+    .dayButtons{
+        display: inline-grid; 
+        row-gap: 3px;
+        grid-template-columns: max-content max-content max-content; 
+    }
+    .navButtons{
+        display: inline-grid; 
+        row-gap: 10px;
+        grid-template-rows: max-content max-content; 
+        float: right;
+        
+    }
+    .exName{
+        background-color: rgb(96, 160, 79);
+        width:100%;
+    }
+    .exInfo{
+        display: grid;
+        grid-template-rows: auto auto;
+        row-gap:5px;
+        text-align: center;
+    }
+    .exercise{
+        display: grid;
+        grid-template-rows: auto auto;
+        row-gap: 5px;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
     header{
         display: none;
     }

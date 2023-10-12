@@ -2,6 +2,7 @@
 <head>
     <title>Workout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="workout.css">
 </head>
 <html>
@@ -11,12 +12,12 @@
             <!--Each of the buttons will have an onclick that will implement javascript to change the value of the day-label, warm-up value and exercise labels-->
             <!--so essentailly this is a place holder to indicate the presence of javascript communicating with a database-->
            <div class="dayButtons"> 
-            <button class="dayButton" onclick="location.href='/workout.html';">Monday</button>
-            <button class="dayButton" onclick="location.href='/workout.html';">Tuesday</button>
-            <button class="dayButton" onclick="location.href='/workout.html';">Wednesday</button>
-            <button class="dayButton" onclick="location.href='/workout.html';">Thursday</button>
-            <button class="dayButton" onclick="location.href='/workout.html';">Friday</button>
-            <button class="dayButton" onclick="location.href='/workout.html';">Saturday</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Chest</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Hamstring</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Back</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Shoulders</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Quads</button>
+            <button class="dayButton" onclick="location.href='/workout.html';">Arms</button>
            </div>
             
            <div class="navButtons"> 
@@ -26,28 +27,36 @@
     </header>
 
     <main>
-        <h1 class="day-label">Chest</h1>
+        <div class="day-label" style="text-align: center;">
+        <h1>Chest</h1>
         <div class="warm-up">
             <h2 >Warm-up</h2>
             <p>Jogging: 15 minutes</p>
         </div>
 
         <div>
-            <form class="exercise">
-                
-                <span class="exName">
-                    <label>Exercise #1</label>
+            <form id="excercise1" class="exercise">
+
+                <span class="exInfo">
+                    <label onclick="myFunction('exercise1Notes')" class="exName">Incline Bench Press</label>
                     <span>
-                        <input id="weight" type="number">
+                        <input id="weight" type="weight">
                         <label for="weight">lbs</label>
                     </span>
                 </span>
+                <div id="exercise1Notes" class="w3-container w3-hide accordion">
+                    <h4>Incline Bench Press</h4>
+                    <p>4 sets of 6-10 reps<br/>
+                    1:00 minute rest</p>
+                    <textarea class="notes" rows="5" cols="33">Notes:</textarea>
+                   <!-- <input style="height: max-content;" id="notes" type="text"> -->
+                </div>
 
                 <span class="sets">
 
                     <span class="set">
                         <label for="reps">x</label>
-                        <input id="reps" type="number" size="5">
+                        <input id="reps" type="number">
                     </span>
 
                     <span class="set">
@@ -68,21 +77,28 @@
                 </span>
             </form>
             
-            <form class="exercise">
-                
-                <span class="exName">
-                    <label>Exercise #1</label>
+            <form id="excercise2" class="exercise">
+
+                <span class="exInfo">
+                    <label onclick="myFunction('exercise2Notes')" class="exName">Incline Dumbbell Fly</label>
                     <span>
-                        <input id="weight" type="number">
+                        <input id="weight" type="weight">
                         <label for="weight">lbs</label>
                     </span>
                 </span>
+                <div id="exercise2Notes" class="w3-container w3-hide accordion">
+                    <h4>Incline Dumbbell Fly</h4>
+                    <p>4 sets of 6-10 reps<br/>
+                    1:00 minute rest</p>
+                    <textarea class="notes" rows="5" cols="33">Notes:</textarea>
+                   <!-- <input style="height: max-content;" id="notes" type="text"> -->
+                </div>
 
                 <span class="sets">
 
                     <span class="set">
                         <label for="reps">x</label>
-                        <input id="reps" type="number" size="5">
+                        <input id="reps" type="number">
                     </span>
 
                     <span class="set">
@@ -102,22 +118,28 @@
 
                 </span>
             </form>
+            <form id="excercise3" class="exercise">
 
-            <form class="exercise">
-                
-                <span class="exName">
-                    <label>Exercise #1</label>
+                <span class="exInfo">
+                    <label onclick="myFunction('exercise3Notes')" class="exName">Dumbbell Shoulder Press</label>
                     <span>
-                        <input id="weight" type="number">
+                        <input id="weight" type="weight">
                         <label for="weight">lbs</label>
                     </span>
                 </span>
+                <div id="exercise3Notes" class="w3-container w3-hide accordion">
+                    <h4>Dumbbell Shoulder Press</h4>
+                    <p>4 sets of 6-10 reps<br/>
+                    1:00 minute rest</p>
+                    <textarea class="notes" rows="5" cols="33">Notes:</textarea>
+                   <!-- <input style="height: max-content;" id="notes" type="text"> -->
+                </div>
 
                 <span class="sets">
 
                     <span class="set">
                         <label for="reps">x</label>
-                        <input id="reps" type="number" size="5">
+                        <input id="reps" type="number">
                     </span>
 
                     <span class="set">
@@ -137,22 +159,28 @@
 
                 </span>
             </form>
+            <form id="excercise4" class="exercise">
 
-            <form class="exercise">
-                
-                <span class="exName">
-                    <label>Exercise #1</label>
+                <span class="exInfo">
+                    <label onclick="myFunction('exercise4Notes')" class="exName">Seated Dumbbell Shoulder Press</label>
                     <span>
-                        <input id="weight" type="number">
+                        <input id="weight" type="weight">
                         <label for="weight">lbs</label>
                     </span>
                 </span>
+                <div id="exercise4Notes" class="w3-container w3-hide accordion">
+                    <h4>Seated Dumbbell Shoulder Press</h4>
+                    <p>4 sets of 6-10 reps<br/>
+                    1:00 minute rest</p>
+                    <textarea class="notes" rows="5" cols="33">Notes:</textarea>
+                   <!-- <input style="height: max-content;" id="notes" type="text"> -->
+                </div>
 
                 <span class="sets">
 
                     <span class="set">
                         <label for="reps">x</label>
-                        <input id="reps" type="number" size="5">
+                        <input id="reps" type="number">
                     </span>
 
                     <span class="set">
@@ -172,22 +200,28 @@
 
                 </span>
             </form>
+            <form id="excercise5" class="exercise">
 
-            <form class="exercise">
-                
-                <span class="exName">
-                    <label>Exercise #1</label>
+                <span class="exInfo">
+                    <label onclick="myFunction('exercise5Notes')" class="exName">Upright Machine Chest Flys</label>
                     <span>
-                        <input id="weight" type="number">
+                        <input id="weight" type="weight">
                         <label for="weight">lbs</label>
                     </span>
                 </span>
+                <div id="exercise5Notes" class="w3-container w3-hide accordion">
+                    <h4>Upright Machine Chest Flys</h4>
+                    <p>4 sets of 6-10 reps<br/>
+                    1:00 minute rest</p>
+                    <textarea class="notes" rows="5" cols="33">Notes:</textarea>
+                   <!-- <input style="height: max-content;" id="notes" type="text"> -->
+                </div>
 
                 <span class="sets">
 
                     <span class="set">
                         <label for="reps">x</label>
-                        <input id="reps" type="number" size="5">
+                        <input id="reps" type="number">
                     </span>
 
                     <span class="set">
@@ -207,22 +241,28 @@
 
                 </span>
             </form>
+            <form id="excercise6" class="exercise">
 
-            <form class="exercise">
-                
-                <span class="exName">
-                    <label>Exercise #1</label>
+                <span class="exInfo">
+                    <label onclick="myFunction('exercise6Notes')" class="exName">Incline Chest Press Machine</label>
                     <span>
-                        <input id="weight" type="number">
+                        <input id="weight" type="weight">
                         <label for="weight">lbs</label>
                     </span>
                 </span>
+                <div id="exercise6Notes" class="w3-container w3-hide accordion">
+                    <h4>Incline Chest Press Machine</h4>
+                    <p>4 sets of 6-10 reps<br/>
+                    1:00 minute rest</p>
+                    <textarea class="notes" rows="5" cols="33">Notes:</textarea>
+                   <!-- <input style="height: max-content;" id="notes" type="text"> -->
+                </div>
 
                 <span class="sets">
 
                     <span class="set">
                         <label for="reps">x</label>
-                        <input id="reps" type="number" size="5">
+                        <input id="reps" type="number">
                     </span>
 
                     <span class="set">
@@ -252,6 +292,26 @@
         <a href="https://github.com/jrsorensen/cs-260-Fall-2023">My Github Repo</a>
         </h2>
     </footer>
+
+    <script>
+        function myFunction(id) {
+          var x = document.getElementById(id);
+          if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+          } else { 
+            x.className = x.className.replace(" w3-show", "");
+          }
+        }
+        function myTopNav() {
+             var x = document.getElementById("myLinks");
+             if (x.style.display === "block") {
+               x.style.display = "none";
+             } else {
+               x.style.display = "block";
+             }
+        }
+        </script>
+        
     
 </body>
 </html>
