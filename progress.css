@@ -1,0 +1,114 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(114, 112, 108);
+    height:100vh;
+    color:rgb(237,233,222);
+    margin:0;
+}
+
+header{
+    flex:0 auto;
+    background-color: rgb(96, 160, 79);
+
+}
+
+.navButtons{
+    display:inline;
+    height:inherit;
+    margin-right: 10px;
+
+}
+.dayButtons{
+    display:inline;
+    height:100%;
+}
+
+.dayButton{
+    color:rgba(237,233,222);
+    font-size: large;
+    float: left;
+    width:100px;
+    margin:5px 0px;
+    border:none;
+    padding:3px;
+    height:fit-content;
+    background-color: rgba(96, 160, 79);
+}
+.navigation{
+    color:rgba(237,233,222);
+    float: right;
+    width:60px;
+    margin-top:9px;
+    border:none;
+    padding:3px;
+    background-color: rgba(96, 160, 79);
+
+}
+.dayButton:hover{
+    background-color:  rgb(39, 112, 35);
+}
+.navigation:hover{
+    background-color: rgb(39, 112, 35);
+}
+.dayButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  .navigation:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  main{
+    flex:1;
+    margin:auto;
+    width:50%;
+}
+
+.progress-graph{
+    margin:auto;
+    width: 50%;
+    padding: 15px;
+    font-size: larger;
+}
+input[type='number']{
+width: 40px;
+} 
+
+footer{
+    flex: 0 40px;
+    text-align: center;
+    background-color: rgba(25, 174, 31);    
+    background-color: rgb(96, 160, 79);       
+}
+
+@media only screen and (max-width: 720px) {
+    .dayButtons{
+        display: inline-grid; 
+        row-gap: 3px;
+        grid-template-columns: max-content max-content max-content; 
+    }
+    .navButtons{
+        display: inline-grid; 
+        row-gap: 10px;
+        grid-template-rows: max-content max-content; 
+        float: right;
+        
+    }
+}
+@media only screen and (max-width: 370px) {
+    header{
+        display: none;
+    }
+    footer{
+        display: none;
+    }
+    .exercise{
+        display: grid;
+        grid-template-rows: auto auto;
+        row-gap: 5px;
+    }
+}

@@ -1,56 +1,28 @@
 <!DOCTYPE html>
 <head>
-    <title>Workout</title>
-    <style>
-        p {
-            font-size: small;
-            text-align: center;
-        }
-        footer {
-            position:relative;
-            left: 0;
-            bottom: 0;
-            background-color: forestgreen;
-            width: 100%;
-            text-align: center;
-        }
-        main{
-            margin:auto;
-            width: 50%;
-        }
-        .progress-graph{
-            margin:auto;
-            width: 50%;
-            padding: 15px;
-            font-size: larger;
-        }
-        input[type='number']{
-        width: 40px;
-        } 
-    </style>
+    <title>Progress</title>
+    <link rel="stylesheet" href="progress.css"/>
 </head>
 <html>
 <body>
     <header>
-        <div style="height: 30px">
-            <!--Each of the buttons will have an onclick that will implement javascript to change the value of the day-label, warm-up value and exercise labels-->
-            <!--so essentailly this is a place holder to indicate the presence of javascript communicating with a database-->
-            <button name="monday" onclick="location.href='/workout.html';" style= "width: 12%; height:30px; background-color: #17ad37;">Monday</button>
-            <button name="tuesday" onclick="location.href='/workout.html';" style= "width: 12%; height:100%; background-color: #17ad37;" >Tuesday</button>
-            <button name="wednesday" onclick="location.href='/workout.html';" style= "width: 12%; height:100%; background-color: #17ad37;">Wednesday</button>
-            <button name="thursday" onclick="location.href='/workout.html';" style= "width: 12%; height:100%; background-color: #17ad37;">Thursday</button>
-            <button name="friday" onclick="location.href='/workout.html';" style= "width: 12%; height:100%; background-color: #17ad37;">Friday</button>
-            <button name="saturday" onclick="location.href='/workout.html';" style= "width: 12%; height:100%; background-color: #17ad37;">Saturday</button>
-
-            <button type="submit" onclick="location.href='/index.html';" style= "float: right; width: 10%; height:100%; background-color: #17ad37;">Log out</button>
-            <button type="submit" onclick="location.href='/workout.html';" style= "float: right; width: 10%; height:100%; background-color: #17ad37;">Workout</button>
-
-            <!--<select id="pages" name="pages" style="float: right; width:10%; height:100%; background-color: #17ad37;">
-                <option value="progress" onclick="">Progress</option>
-                <option value="logout" onclick="">Log out</option>
-            </select>-->
-        </div>
-    </header>
+        <!-- <div style="height: 30px" style="display:inline-grid"> -->
+             <!--Each of the buttons will have an onclick that will implement javascript to change the value of the day-label, warm-up value and exercise labels-->
+             <!--so essentailly this is a place holder to indicate the presence of javascript communicating with a database-->
+            <div class="dayButtons"> 
+             <button class="dayButton" onclick="location.href='/workout.html';">Monday</button>
+             <button class="dayButton" onclick="location.href='/workout.html';">Tuesday</button>
+             <button class="dayButton" onclick="location.href='/workout.html';">Wednesday</button>
+             <button class="dayButton" onclick="location.href='/workout.html';">Thursday</button>
+             <button class="dayButton" onclick="location.href='/workout.html';">Friday</button>
+             <button class="dayButton" onclick="location.href='/workout.html';">Saturday</button>
+            </div>
+             
+            <div class="navButtons"> 
+             <button type="submit" class="navigation" onclick="location.href='/index.html';">Log out</button>
+             <button type="sumbit" class="navigation" onclick="location.href='/progress.html';">Progress</button>
+         </div>
+     </header>
     <main>
         <h1 style="text-align: center; font-size: 700%;" class="day-label">Progress</h1>
         <p>The below graph pictures are place holders for database data</p>
@@ -87,7 +59,7 @@
         </div>
     </main>
     <footer>
-        <h1>Workout page @CS 260</h1>
+        <h1>Progress page @CS 260</h1>
         <a href="https://github.com/jrsorensen/cs-260-Fall-2023">My Github Repo</a>
 
     </footer>
