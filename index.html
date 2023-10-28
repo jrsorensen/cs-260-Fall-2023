@@ -17,12 +17,12 @@
 
         <main>
             <div>
-                <form action="/workout.html">
+                <form>
                     <label for="username">username:</label>
                     <input type="text" id="username"><br>
                     <label for="password">password:</label>
                     <input type="password" id="password"><br><br>
-                    <input type="submit" class="submit" id="submit">
+                    <input type="button" class="submit" id="submit" value="Log in" onclick="login()">
                 </form>
                 <p class="loginNotifications">
                     This is a placeholder for where my websocket will notify the user of when other users are logging in
@@ -49,5 +49,5 @@
     </body>
 
   
-  
+    <script src="index.js"></script>
 </html>
