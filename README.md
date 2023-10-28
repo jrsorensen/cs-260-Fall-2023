@@ -47,3 +47,14 @@ For this deliverable I built out the structure of my application using HTML and 
 - **Login** - Input boxes for username and password and submit button for login.
 - **Database** - The excersise names, weights, and previous reps will all be displayed as their info is pulled from the database. Currently there are placeholder names (Exercise1) The graphs on the progress page are also placeholders. Weights and reps that are submitted with the "log workout" button will be sent to the database and then retrieved when the user goes to the progress page. They will also be able to submit their own weight and see it displayed.
 - **WebSocket** - The aside on the login page is serving as a placeholder for the WebSocket activity. This area will display the usernames of other people who are logging in to start their workouts.
+
+## CSS deliverable
+
+For this deliverable I styled the application into its neat, final appearance.
+
+- **Header, footer, and main content body** - All styled consistently.
+- **Navigation elements** - A navigation bar with links to all pages styled and responsive to window resizing.
+- **Responsive to window resizing** - My website responds to a variety of window sizes, reformatting the menu bar, set inputs, and labels
+- **Application elements** - Used good contrast and whitespace. Styled to not look cluttered.
+- **Application text content** - Consistent fonts and sizes.
+- **Application images** - Opening image as well as graph image placeholders.
