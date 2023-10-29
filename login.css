@@ -40,8 +40,8 @@
         form{
             margin-bottom: 1em;
         }
-        p.loginNotifications{
-            color: cadetblue;
+        #loginNotifications{
+            color: rgb(129, 208, 211);
             margin-bottom: 2em;
         }
         p{

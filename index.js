@@ -14,3 +14,10 @@ function welcomeMessage() {
          "! \n Are you ready to begin today's workout?"
          alert(message)
     }
+
+const notificationPlaceHolder = setInterval(myTimer,3000);
+function myTimer(){
+  const num = Math.floor(Math.random() * 500);
+  const date = new Date();
+  document.getElementById("loginNotifications").innerText = "Gym rat #" + num + " has started their workout!";
+}
