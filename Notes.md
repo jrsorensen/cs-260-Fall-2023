@@ -262,9 +262,9 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
 12. By default, the HTML span element has a default CSS display property value of:
   - Display this element with a width that is only as big as its content. A `b` or `span` element has inline display by default.
 13. How would you use CSS to change all the div elements to have a background color of red?
-    - '''div {
+    ```div {
   color: red;
-}'''
+}```
 14. How would you display an image with a hyperlink in HTML?
   - To add an image `<img alt="mountain landscape" src="https://images.pexels.com/photos/164170/pexels-photo-164170.jpeg" />`
 15. In the CSS box model, what is the ordering of the box layers starting at the inside and working out?
@@ -272,13 +272,13 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
 16. Given the following HTML, what CSS would you use to set the text "troubl" to green and leave the "double" text unaffected?
 17. What will the following code output when executed using a for loop and console.log?
 18. How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green?
-  - ''' #byu { color: green; } '''
+  - ``` #byu { color: green; } ```
 19. What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, and third level heading?
-    - <p></p>,<ol></ol>,<ul></ul>,<h2></h2>,<h1></h1>,<h3>></h3>
+    - "<p></p>,<ol></ol>,<ul></ul>,<h2></h2>,<h1></h1>,<h3>></h3>"
 20. How do you declare the document type to be html?
   - `<! DOCTYPE html>`
 21. What is valid JavaScript syntax for if, else, for, while, switch statements?
-    - '''if (hour < 20) {
+    - ```if (hour < 20) {
   greeting = "Good day";
 } else {
   greeting = "Good evening";
@@ -297,7 +297,7 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
   text += cars[i] + "<br>";
 }  while (condition) {
   // code block to be executed
-} '''
+} ```
 22. What is the correct syntax for creating a JavaScript object?
   - `const car = {type:"Fiat", model:"500", color:"white"};`
 23. Is it possible to add new properties to JavaScript objects?
