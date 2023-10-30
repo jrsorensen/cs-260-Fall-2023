@@ -56,6 +56,55 @@ The time to live (TTL)
 + The different caching layers should then honor the TTL and clear their cache after the requested period has passed.
 + 
 
+# The Console
+## Executing commands
+
+The other primary purpose of the console is to execute commands. You already did this in the previous section when you executed commands for working with the file system. However, console commands can perform many different operations. Here are some basic commands that you show experiment with.
+
+- **echo** - Output the parameters of the command
+- **cd** - Change directory
+- **mkdir** - Make directory
+- **rmdir** - Remove directory
+- **rm** - Remove file(s)
+- **mv** - Move file(s)
+- **cp** - Copy files
+- **ls** - List files
+- **curl** - Command line client URL browser
+- **grep** - Regular expression search
+- **find** - Find files
+- **top** - View running processes with CPU and memory usage
+- **df** - View disk statistics
+- **cat** - Output the contents of a file
+- **less** - Interactively output the contents of a file
+- **wc** - Count the words in a file
+- **ps** - View the currently running processes
+- **kill** - Kill a currently running process
+- **sudo** - Execute a command as a super user (admin)
+- **ssh** - Create a secure shell on a remote computer
+- **scp** - Securely copy files to a remote computer
+- **history** - Show the history of commands
+- **ping** - Check if a website is up
+- **tracert** - Trace the connections to a website
+- **dig** - Show the DNS information for a domain
+- **man** - Look up a command in the manual
+
+You can also chain the input and output of commands using special characters
+
+- `|` - Take the output from the command on the left and _pipe_, or pass, it to the command on the right
+- `>` - Redirect output to a file. Overwrites the file if it exists
+- `>>` - Redirect output to a file. Appends if the file exists
+
+For example, you can list the files in a directory, pipe it into `grep` to search for files created in Nov, and then pipe that into `wc` to count the number of files found with a date of Nov.
+
+```
+ls -l | grep ' Nov ' | wc -l
+```
+
+There are also keystrokes that have special meaning in the console.
+
+- `CTRL-R` - Use type ahead to find previous commands
+- `CTRL-C` - Kill the currently running command
+
 # HTML
 ## Examples
 ```html
@@ -153,3 +202,92 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
 
 ## CSS Declarations and Units
 **[CSS declarations examples](https://github.com/webprogramming260/.github/blob/main/profile/css/declarations/declarations.md)**
+
+# Notes for Midterm
+
+### References to other helpful notes
+- [MarkDown syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#relative-links)
+- [The Console](https://github.com/webprogramming260/.github/blob/main/profile/essentials/console/console.md)
+- [HTTPS, TLS, and web certificates](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md)
+
+### HTML
+- [Hypertext Markup Language](https://github.com/webprogramming260/.github/blob/main/profile/html/introduction/introduction.md)
+- [HTML structure elements](https://github.com/webprogramming260/.github/blob/main/profile/html/structure/structure.md)
+- [HTML input elements](https://github.com/webprogramming260/.github/blob/main/profile/html/input/input.md)
+- [HTML media elements](https://github.com/webprogramming260/.github/blob/main/profile/html/media/media.md)
+  
+### CSS
+- [Cascading Style Sheets](https://github.com/webprogramming260/.github/blob/main/profile/css/introduction/introduction.md)
+- [CSS Selectors](https://github.com/webprogramming260/.github/blob/main/profile/css/selectors/selectors.md)
+- [CSS Declarations](https://github.com/webprogramming260/.github/blob/main/profile/css/declarations/declarations.md)
+- [CSS Fonts](https://github.com/webprogramming260/.github/blob/main/profile/css/fonts/fonts.md)
+- [CSS Animation](https://github.com/webprogramming260/.github/blob/main/profile/css/animation/animation.md)
+- [Responsive design](https://github.com/webprogramming260/.github/blob/main/profile/css/responsive/responsive.md)
+- [Grid](https://github.com/webprogramming260/.github/blob/main/profile/css/grid/grid.md)
+- [CSS flex](https://github.com/webprogramming260/.github/blob/main/profile/css/flexbox/flexbox.md)
+
+### JavaScript
+- [JavaScript arrow function](https://github.com/webprogramming260/.github/blob/main/profile/javascript/arrow/arrow.md)
+- [JavaScript array](https://github.com/webprogramming260/.github/blob/main/profile/javascript/array/array.md)
+- [JavaScript rest and spread](https://github.com/webprogramming260/.github/blob/main/profile/javascript/restSpread/restSpread.md)
+- [JavaScript destructuring](https://github.com/webprogramming260/.github/blob/main/profile/javascript/destructuring/destructuring.md)
+- [JavaScript object and classes](https://github.com/webprogramming260/.github/blob/main/profile/javascript/objectClasses/objectClasses.md)
+- [Document Object Model](https://github.com/webprogramming260/.github/blob/main/profile/javascript/dom/dom.md)
+- [Promises](https://github.com/webprogramming260/.github/blob/main/profile/javascript/promises/promises.md)
+- [JavaScript Async/await](https://github.com/webprogramming260/.github/blob/main/profile/javascript/asyncAwait/asyncAwait.md)
+
+# Midterm Study Guide
+1. In the following code, what does the link element do?
+  - Link elements can be used to connect HTML to files containing CSS or JavaScript.
+2. In the following code, what does a div tag do?
+  - a div tag is a block division of content
+3. In the following code, what is the difference between the #title and .grid selector?
+  - an [ID selector](#ID-selector) is when you select something in CSS by the unique id of that object, using the hash symbol '#' to reference it. A [class selector](#Class-selector) references a class of one or many objects using a period '.' to select it.
+4. In the following code, what is the difference between padding and margin?
+  - Take a look at [the box model](#The-box-model).  
+5. Given this HTML and this CSS how will the images be displayed using flex?
+  - Take a look at [CSS Flexbox](#CSS-Flexbox) and [Display](#Display).
+6. What does the following padding CSS do?
+  - Take a look at [the box model](#The-box-model).  
+7. What does the following code using arrow syntax function declaration do?
+  - Take a look at [JavaScript arrow functions](#JavaScript-arrow-function).
+8. What does the following code using map with an array output?
+  - Take a look at [Array Object functions](#Array-Object-Functions).
+9. What does the following code output using getElementByID and addEventListener?
+  - Take a look at [Accessing the DOM](#Accessing-the-DOM).
+10. What does the following line of Javascript do using a # selector?
+11. Which of the following are true? (mark all that are true about the DOM)
+12. By default, the HTML span element has a default CSS display property value of:
+13. How would you use CSS to change all the div elements to have a background color of red?
+14. How would you display an image with a hyperlink in HTML?
+15. In the CSS box model, what is the ordering of the box layers starting at the inside and working out?
+16. Given the following HTML, what CSS would you use to set the text "troubl" to green and leave the "double" text unaffected?
+17. What will the following code output when executed using a for loop and console.log?
+18. How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green?
+19. What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, and third level heading?
+20. How do you declare the document type to be html?
+  - `<! DOCTYPE html>`
+21. What is valid JavaScript syntax for if, else, for, while, switch statements?
+22. What is the correct syntax for creating a JavaScript object?
+23. Is it possible to add new properties to JavaScript objects?
+  - Yes
+24. If you want to include JavaScript on an HTML page, which tag do you use?
+  - In HTML, JavaScript code is inserted between <script> and </script> tags.
+25. Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and leave the "fish" text unaffected?
+26. Which of the following correctly describes JSON?
+  - "a standard text-based format for representing structured data based on JavaScript object syntax"
+27. What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo do?
+28. Which of the following console command creates a remote shell session?
+  - ssh
+29. Which of the following is true when the -la parameter is specified for the ls console command?
+  - it will list all files and directories in the current directory, including hidden files and directories, in a long format with detailed information about each item.
+30. Which of the following is true for the domain name banana.fruit.bozo.click, which is the top-level domain, which is a subdomain, which is a root domain?
+  - top-level domain: .click, root domain: bozo.click, subdomains: .banana, .fruit
+31. Is a web certificate necessary to use HTTPS?
+  - Yes
+32. Can a DNS A record point to an IP address or another A record?
+  - an IP address
+33. Port 443, 80, 22 is reserved for which protocol?
+  - 443: HTTPS Protocol, 80: HTTP Protocol, 22: SSH
+34. What will the following code using Promises output when executed?
+
