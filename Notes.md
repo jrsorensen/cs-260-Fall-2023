@@ -256,24 +256,56 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
 9. What does the following code output using getElementByID and addEventListener?
   - Take a look at [Accessing the DOM](#Accessing-the-DOM).
 10. What does the following line of Javascript do using a # selector?
+    - The # selector is the id selector.
 11. Which of the following are true? (mark all that are true about the DOM)
+    - Every element in an HTML document implements teh DOM element interace wheich is deri ed from the DOM notde interface. The former provides the means for iterating child elements, accessing the parent element, and manipulating the elements. You can use querySelectorAll to select things. You can access all of an element's text with the `textContent` and all of the HTML witht he `innerHTML` property. 
 12. By default, the HTML span element has a default CSS display property value of:
+  - Display this element with a width that is only as big as its content. A `b` or `span` element has inline display by default.
 13. How would you use CSS to change all the div elements to have a background color of red?
+    - '''div {
+  color: red;
+}'''
 14. How would you display an image with a hyperlink in HTML?
+  - To add an image `<img alt="mountain landscape" src="https://images.pexels.com/photos/164170/pexels-photo-164170.jpeg" />`
 15. In the CSS box model, what is the ordering of the box layers starting at the inside and working out?
+    - Content, Padding, Border, Margin
 16. Given the following HTML, what CSS would you use to set the text "troubl" to green and leave the "double" text unaffected?
 17. What will the following code output when executed using a for loop and console.log?
 18. How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green?
+  - ''' #byu { color: green; } '''
 19. What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, and third level heading?
+    - <p></p>,<ol></ol>,<ul></ul>,<h2></h2>,<h1></h1>,<h3>></h3>
 20. How do you declare the document type to be html?
   - `<! DOCTYPE html>`
 21. What is valid JavaScript syntax for if, else, for, while, switch statements?
+    - '''if (hour < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+      switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+   for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}  while (condition) {
+  // code block to be executed
+} '''
 22. What is the correct syntax for creating a JavaScript object?
+  - `const car = {type:"Fiat", model:"500", color:"white"};`
 23. Is it possible to add new properties to JavaScript objects?
   - Yes
 24. If you want to include JavaScript on an HTML page, which tag do you use?
   - In HTML, JavaScript code is inserted between <script> and </script> tags.
 25. Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and leave the "fish" text unaffected?
+    - `let text = "Visit Microsoft!"; let result = text.replace(/microsoft/i, "W3Schools");`
 26. Which of the following correctly describes JSON?
   - "a standard text-based format for representing structured data based on JavaScript object syntax"
 27. What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo do?
