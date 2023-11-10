@@ -61,3 +61,25 @@ function saveWorkoutData(){
     }
     localStorage.setItem(workout[0],JSON.stringify(workout));
 }
+/* example of how I would use this connected to the index.js. That fetch call would direct to the index.js parent api thing for scores (or in my case, workout)
+async saveScore(score) {
+  const userName = this.getPlayerName();
+  const date = new Date().toLocaleDateString();
+  const newScore = {name: userName, score: score, date: date};
+
+  try {
+    const response = await fetch('/api/score', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(newScore),
+    });
+
+    // Store what the service gave us as the high scores
+    const scores = await response.json();
+    localStorage.setItem('scores', JSON.stringify(scores));
+  } catch {
+    // If there was an error then just track scores locally
+    this.updateScoresLocal(newScore);
+  }
+}
+*/

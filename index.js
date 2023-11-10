@@ -1,23 +1,59 @@
-function login() {
-    const name = document.querySelector("#username");
-    const password = document.querySelector("#password");
-    
-    localStorage.setItem("userName", name.value);
-    localStorage.setItem("password", password.value);
-    welcomeMessage();
-    
-    window.location.href = "/workout.html"
+const express = require('express');
+const app = express();
+
+// The service port. In production the frontend code is statically hosted by the service on the same port.
+const port = process.argv.length > 2 ? process.argv[2] : 3000;
+
+// JSON body parsing using built-in middleware
+app.use(express.json());
+
+// Serve up the frontend static content hosting
+app.use(express.static('public'));
+
+// Router for service endpoints
+const apiRouter = express.Router();
+app.use(`/api`, apiRouter);
+
+// Getworkouts
+apiRouter.get('/workouts', (_req, res) => {
+  res.send(workouts);
+});
+
+// Submitworkout
+apiRouter.post('/workout', (req, res) => {
+  workouts = updateWorkouts(req.body, workouts);
+  res.send(workouts);
+});
+
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+// updateworkouts considers a new workout for inclusion in the high workouts.
+// The high workouts are saved in memory and disappear whenever the service is restarted.
+let workouts = [];
+function updateWorkouts(newWorkout, workouts) {
+ /* let found = false;
+  for (const [i, prevWorkout] of workouts.entries()) {
+    if (newWorkout.workout > prevWorkout.workout) {
+      workouts.splice(i, 0, newWorkout);
+      found = true;
+      break;
+    }
   }
 
-function welcomeMessage() {
-        const message = "Welcome " + localStorage.getItem("userName") +
-         "! \n Are you ready to begin today's workout?"
-         alert(message)
-    }
+  if (!found) {
+    workouts.push(newWorkout);
+  }
 
-const notificationPlaceHolder = setInterval(myTimer,3000);
-function myTimer(){
-  const num = Math.floor(Math.random() * 500);
-  const date = new Date();
-  document.getElementById("loginNotifications").innerText = "Gym rat #" + num + " has started their workout!";
+  if (workouts.length > 10) {
+    workouts.length = 10;
+  }
+*/
+  return workouts;
 }
