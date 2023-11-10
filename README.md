@@ -58,3 +58,13 @@ For this deliverable I styled the application into its neat, final appearance.
 - **Application elements** - Used good contrast and whitespace. Styled to not look cluttered.
 - **Application text content** - Consistent fonts and sizes.
 - **Application images** - Opening image as well as graph image placeholders.
+- 
+
+## JavaScript deliverable
+
+For this deliverable I added javascript functionality to buttons, login notifications, submissions, and accordion elements.
+
+- **Login** - When a user logs in, their username and password are stored in local storage. There is then a pop-up alert welcoming them to the site and then redirecting them to the workout main page.
+- **Database** - Login credentials are stored in local storage as a placeholder for database storage. When a workout is submitted using the **Log Workout** button, the name, weight, rep counts, and notes associated with each exercise are stored in local storage as a placeholder for database storage. When a new user weight is logged with the **Submit** button on the progress page, the new weight is loaded into local storage as a placeholder for database storage.
+- **Websocket** - I used the setInterval function to create a placeholder on the login page for a notifications bar that will display when other users begin their workouts.
+- **Application Logic** - There are three buttons **Log in** **Log Workout** and **Submit** that, when pressed, will save user data. There are also accordions built in to each exercise where users can store notes. Opening the accordion will also change the page layout.
