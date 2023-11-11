@@ -26,7 +26,6 @@ var myArray = new Array();
     }
 */
 function gatherWorkoutData(){
-
     /* workout has many form#
         form# has 
             one exInfo (weight)
@@ -62,6 +61,11 @@ function gatherWorkoutData(){
     return workout
 }
 
+function populateSavedWorkout(prevWorkout){
+  //need to check if there is no prevWorkout and quit
+  
+}
+
 function saveWorkoutData(){
   const workout = this.gatherWorkoutData();
   //this puts the workout in to local storage with the name of the day (chest) and then the workout info (chest, incline press 135lbs x12 x12 ...)
@@ -77,6 +81,7 @@ async function backupWorkoutData(){
       body: JSON.stringify(workout),
     });
     const newWorkout = await response.json();
+    console.log("success");
   } catch {
     //if there was an error then just track the workout on local storage
     console.log("error backing up workout");
@@ -84,27 +89,22 @@ async function backupWorkoutData(){
     this.saveWorkoutData();
   }
 }
-/* example of how I would use this connected to the index.js. That fetch call would direct to the index.js parent api thing for scores (or in my case, workout)
-async saveScore(score) {
-  const userName = this.getPlayerName();
-  const date = new Date().toLocaleDateString();
-  const newScore = {name: userName, score: score, date: date};
 
+let res = [];
+async function getPrevWorkoutData(){
   try {
-    const response = await fetch('/api/score', {
-      method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify(newScore),
-    });
-
-    // Store what the service gave us as the high scores
-    const scores = await response.json();
-    localStorage.setItem('scores', JSON.stringify(scores));
+    const response = await fetch('/api/workouts');
+    res = await response.json();
+    console.log("success");
+    console.log(res);
+    //populate the form with data
   } catch {
-    // If there was an error then just track scores locally
-    this.updateScoresLocal(newScore);
+
+    console.log("error getting previous workouts");
   }
 }
-*/
+
+const prevWorkout = getPrevWorkoutData();
+populateSavedWorkout(prevWorkout);
 
 //"["Chest",{"name":"Incline Bench Press","weight":"200","notes":"Notes:","sets":["500","200","2","3"]},{"name":"Incline Dumbbell Fly","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Seated Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Upright Machine Chest Flys","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Incline Chest Press Machine","weight":"","notes":"Notes:","sets":["","","",""]}]"

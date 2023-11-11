@@ -11,18 +11,22 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Router for service endpoints
-const apiRouter = express.Router();
+var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+var weeklyWorkouts = new Map();
+//weeklyWorkouts.set("Chest",["Chest",{"name":"Incline Bench Press","weight":"200","notes":"Notes:","sets":["500","200","2","3"]},{"name":"Incline Dumbbell Fly","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Seated Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Upright Machine Chest Flys","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Incline Chest Press Machine","weight":"","notes":"Notes:","sets":["","","",""]}]);
 // Getworkouts
 apiRouter.get('/workouts', (_req, res) => {
-  res.send(weeklyWorkouts);
+  jsonText = JSON.stringify(Array.from(weeklyWorkouts.entries()));
+  res.send(jsonText);
 });
 
 // Submitworkout
 apiRouter.post('/workout', (req, res) => {
   updateWorkouts(req.body);
-  res.send(weeklyWorkouts);
+  jsonText = JSON.stringify(Array.from(weeklyWorkouts.entries()));
+  res.send(jsonText);
 });
 
 //Get body weight
@@ -47,10 +51,8 @@ app.listen(port, () => {
 
 // updateworkouts considers a new workout for inclusion in the high workouts.
 // The high workouts are saved in memory and disappear whenever the service is restarted.
-const weeklyWorkouts = new Map();
 function updateWorkouts(newWorkout) {
-  testing = JSON.parse(newWorkout);
-  weeklyWorkouts.set(testing[0],newWorkout);
+  weeklyWorkouts.set(newWorkout[0],newWorkout);
   return weeklyWorkouts;
 }
 
