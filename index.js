@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -16,14 +16,25 @@ app.use(`/api`, apiRouter);
 
 // Getworkouts
 apiRouter.get('/workouts', (_req, res) => {
-  res.send(workouts);
+  res.send(weeklyWorkouts);
 });
 
 // Submitworkout
 apiRouter.post('/workout', (req, res) => {
-  workouts = updateWorkouts(req.body, workouts);
-  res.send(workouts);
+  updateWorkouts(req.body);
+  res.send(weeklyWorkouts);
 });
+
+//Get body weight
+apiRouter.get('/progress', (_req, res) => {
+  res.send(bodyWeightTracker);
+})
+
+//submit body weight
+apiRouter.post('/post-body-weight', (_req, res) => {
+  updateBodyWeight(req.body);
+  res.send(weeklyWorkouts);
+})
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
@@ -36,24 +47,15 @@ app.listen(port, () => {
 
 // updateworkouts considers a new workout for inclusion in the high workouts.
 // The high workouts are saved in memory and disappear whenever the service is restarted.
-let workouts = [];
-function updateWorkouts(newWorkout, workouts) {
- /* let found = false;
-  for (const [i, prevWorkout] of workouts.entries()) {
-    if (newWorkout.workout > prevWorkout.workout) {
-      workouts.splice(i, 0, newWorkout);
-      found = true;
-      break;
-    }
-  }
+const weeklyWorkouts = new Map();
+function updateWorkouts(newWorkout) {
+  testing = JSON.parse(newWorkout);
+  weeklyWorkouts.set(testing[0],newWorkout);
+  return weeklyWorkouts;
+}
 
-  if (!found) {
-    workouts.push(newWorkout);
-  }
-
-  if (workouts.length > 10) {
-    workouts.length = 10;
-  }
-*/
-  return workouts;
+const bodyWeightTracker = [];
+function updateBodyWeight(bodyWeight){
+  bodyWeightTracker.push(bodyWeight);
+  return bodyWeightTracker;
 }

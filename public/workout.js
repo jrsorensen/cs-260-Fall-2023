@@ -25,7 +25,7 @@ var myArray = new Array();
         document.getElementById('enteredName').value = '';
     }
 */
-function saveWorkoutData(){
+function gatherWorkoutData(){
 
     /* workout has many form#
         form# has 
@@ -59,7 +59,30 @@ function saveWorkoutData(){
 
     workout.push(exercise);
     }
-    localStorage.setItem(workout[0],JSON.stringify(workout));
+    return workout
+}
+
+function saveWorkoutData(){
+  const workout = this.gatherWorkoutData();
+  //this puts the workout in to local storage with the name of the day (chest) and then the workout info (chest, incline press 135lbs x12 x12 ...)
+  localStorage.setItem(workout[0],JSON.stringify(workout));
+}
+
+async function backupWorkoutData(){
+  const workout = this.gatherWorkoutData();
+  try {
+    const response = await fetch('/api/workout', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(workout),
+    });
+    const newWorkout = await response.json();
+  } catch {
+    //if there was an error then just track the workout on local storage
+    console.log("error backing up workout");
+  }finally{
+    this.saveWorkoutData();
+  }
 }
 /* example of how I would use this connected to the index.js. That fetch call would direct to the index.js parent api thing for scores (or in my case, workout)
 async saveScore(score) {
@@ -83,3 +106,5 @@ async saveScore(score) {
   }
 }
 */
+
+//"["Chest",{"name":"Incline Bench Press","weight":"200","notes":"Notes:","sets":["500","200","2","3"]},{"name":"Incline Dumbbell Fly","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Seated Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Upright Machine Chest Flys","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Incline Chest Press Machine","weight":"","notes":"Notes:","sets":["","","",""]}]"
