@@ -15,7 +15,8 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 var weeklyWorkouts = new Map();
-//weeklyWorkouts.set("Chest",["Chest",{"name":"Incline Bench Press","weight":"200","notes":"Notes:","sets":["500","200","2","3"]},{"name":"Incline Dumbbell Fly","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Seated Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Upright Machine Chest Flys","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Incline Chest Press Machine","weight":"","notes":"Notes:","sets":["","","",""]}]);
+weeklyWorkouts.set("Chest",["Chest",{"name":"Incline Bench Press","weight":"200","notes":"Notes:","sets":["500","200","2","3"]},{"name":"Incline Dumbbell Fly","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Seated Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Upright Machine Chest Flys","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Incline Chest Press Machine","weight":"","notes":"Notes:","sets":["","","",""]}]);
+
 // Getworkouts
 apiRouter.get('/workouts', (_req, res) => {
   jsonText = JSON.stringify(Array.from(weeklyWorkouts.entries()));

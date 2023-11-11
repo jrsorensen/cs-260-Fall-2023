@@ -14,17 +14,7 @@ function myTopNav() {
        x.style.display = "block";
      }
 }
-/*
-var myArray = new Array();
-    function project5Part2() {
-        var name = document.getElementById('enteredName').value;
-        if (!(typeof name === 'undefined') && name!=null && name.trim()!='') {  
-            myArray.push(name);
-        }
-        console.log(myArray);
-        document.getElementById('enteredName').value = '';
-    }
-*/
+
 function gatherWorkoutData(){
     /* workout has many form#
         form# has 
@@ -61,11 +51,6 @@ function gatherWorkoutData(){
     return workout
 }
 
-function populateSavedWorkout(prevWorkout){
-  //need to check if there is no prevWorkout and quit
-  
-}
-
 function saveWorkoutData(){
   const workout = this.gatherWorkoutData();
   //this puts the workout in to local storage with the name of the day (chest) and then the workout info (chest, incline press 135lbs x12 x12 ...)
@@ -98,13 +83,29 @@ async function getPrevWorkoutData(){
     console.log("success");
     console.log(res);
     //populate the form with data
+
+    let exerciseCount = document.getElementById("allExercises").children.length -1;
+    for( let i = 1; i<= exerciseCount; i++){
+    let exercise = {}
+    //make a loop and dynamically add the number of exercise to the name 
+    let children = document.getElementById("exercise"+ i).children;
+    let children2 = children[0].children;
+    let name = children2[0].textContent; //this will get the "incline bench press" exercise name
+    children[0].children[1].children[0].value = res[0][1][i].weight; //this will give me the 200 "weight" of the exercise
+    children[1].children[2].value = res[0][1][i].notes; //this will give me the value of notes
+
+    let setCount = children[2].children.length;
+    for (let j = 0; j < setCount; j ++){
+      children[2].children[j].children[1].value = res[0][1][i].sets[j];
+    }
+    }
+
   } catch {
 
     console.log("error getting previous workouts");
   }
 }
 
-const prevWorkout = getPrevWorkoutData();
-populateSavedWorkout(prevWorkout);
+getPrevWorkoutData();
 
 //"["Chest",{"name":"Incline Bench Press","weight":"200","notes":"Notes:","sets":["500","200","2","3"]},{"name":"Incline Dumbbell Fly","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Seated Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Upright Machine Chest Flys","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Incline Chest Press Machine","weight":"","notes":"Notes:","sets":["","","",""]}]"
