@@ -1,9 +1,20 @@
-function login() {
-    const name = document.querySelector("#username");
-    const password = document.querySelector("#password");
+async function login() {
+    const name = document.querySelector("#username").value;
+    const password = document.querySelector("#password").value;
+    try{
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({userame : name, password : password})
+      });
+      const confirmation = await response.json();
+      console.log(confirmation);
+    }catch{
+      console.log("error with login");
+    }
     
-    localStorage.setItem("userName", name.value);
-    localStorage.setItem("password", password.value);
+    localStorage.setItem("userName", name);
+    localStorage.setItem("password", password);
     welcomeMessage();
     
     window.location.href = "/workout.html"

@@ -3,3 +3,9 @@
 node_modules/
 dist/
 dbConfig.json
+
+
+
+mongodb+srv://jackrsorensen:<password>@cluster0.racbpqp.mongodb.net/
+
+mongodb+srv://jackrsorensen:<password>@cluster0.racbpqp.mongodb.net/?retryWrites=true&w=majority

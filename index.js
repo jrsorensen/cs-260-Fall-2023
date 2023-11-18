@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
+const { Db } = require('mongodb');
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -18,27 +20,49 @@ var weeklyWorkouts = new Map();
 weeklyWorkouts.set("Chest",["Chest",{"name":"Incline Bench Press","weight":"200","notes":"Notes:","sets":["500","200","2","3"]},{"name":"Incline Dumbbell Fly","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Seated Dumbbell Shoulder Press","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Upright Machine Chest Flys","weight":"","notes":"Notes:","sets":["","","",""]},{"name":"Incline Chest Press Machine","weight":"","notes":"Notes:","sets":["","","",""]}]);
 
 // Getworkouts
-apiRouter.get('/workouts', (_req, res) => {
-  jsonText = JSON.stringify(Array.from(weeklyWorkouts.entries()));
+apiRouter.get('/workouts/chest', async (_req, res) => {
+  jsonText = await DB.getWorkoutData("Chest"); // this will be where you pass the username to get the right person's workout
   res.send(jsonText);
 });
 
 // Submitworkout
-apiRouter.post('/workout', (req, res) => {
+apiRouter.post('/workout', async (req, res) => {
   updateWorkouts(req.body);
   jsonText = JSON.stringify(Array.from(weeklyWorkouts.entries()));
+  jsonText = DB.addWorkout(req.body);
+  //jsonText = await DB.getWorkoutData();
   res.send(jsonText);
 });
 
+//Submit login
+apiRouter.get('/login', (_req, res) => {
+  res.send("logged in");
+
+});
+
+//Submit login
+apiRouter.post('/login', async (req, res) =>{
+  //loginUser(req, res);
+  something = DB.login(req.body);
+  //jsonText = JSON.stringify()
+  res.send("Posting your login" + something);
+})
+
 //Get body weight
-apiRouter.get('/progress', (_req, res) => {
-  res.send(bodyWeightTracker);
+apiRouter.get('/progress', async (_req, res) => {
+  //res.send(bodyWeightTracker);
+  weightProgress = DB.getProgress();
+  console.log(weightProgress);
 })
 
 //submit body weight
-apiRouter.post('/post-body-weight', (_req, res) => {
-  updateBodyWeight(req.body);
-  res.send(weeklyWorkouts);
+apiRouter.post('/post-body-weight', async (req, res) => {
+ // updateBodyWeight(req.body);
+ // res.send(weeklyWorkouts);
+ //datatest = JSON.stringify({Progress : req.body});
+ DB.addProgress(req.body);
+ //jsonText = await DB.getProgress(datatest);
+ //res.send(jsonText);
 })
 
 // Return the application's default page if the path is unknown
@@ -57,8 +81,8 @@ function updateWorkouts(newWorkout) {
   return weeklyWorkouts;
 }
 
-const bodyWeightTracker = [];
-function updateBodyWeight(bodyWeight){
-  bodyWeightTracker.push(bodyWeight);
-  return bodyWeightTracker;
-}
+// const bodyWeightTracker = [];
+// function updateBodyWeight(bodyWeight){
+//   bodyWeightTracker.push(bodyWeight);
+//   return bodyWeightTracker;
+// }
