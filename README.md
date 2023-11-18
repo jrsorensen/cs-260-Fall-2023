@@ -68,3 +68,14 @@ For this deliverable I added javascript functionality to buttons, login notifica
 - **Database** - Login credentials are stored in local storage as a placeholder for database storage. When a workout is submitted using the **Log Workout** button, the name, weight, rep counts, and notes associated with each exercise are stored in local storage as a placeholder for database storage. When a new user weight is logged with the **Submit** button on the progress page, the new weight is loaded into local storage as a placeholder for database storage.
 - **Websocket** - I used the setInterval function to create a placeholder on the login page for a notifications bar that will display when other users begin their workouts.
 - **Application Logic** - There are three buttons **Log in** **Log Workout** and **Submit** that, when pressed, will save user data. There are also accordions built in to each exercise where users can store notes. Opening the accordion will also change the page layout.
+
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that revieve workout data (weight, sets, notes) and store it in a temporary database. I also added a backend enpoint that displays your previous workout data and populates the weights and sets.
+
+- **Node.js/Express HTTP service** - done!
+- **Static middleware for frontend** - done!
+- **Calls to third party endpoints** - On the login page, an inspirational quote is dynamically generated/ called from a third party endpoint.
+- **Backend service endpoints** - Placeholders for log workout data that stores the current workout on the server. Endpoints for displaying and storing this and the user's weight on the progress page.
+- **Frontend calls service endpoints** - I did this using the fetch function in my workout and progress pages.
