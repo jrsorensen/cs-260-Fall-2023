@@ -79,3 +79,11 @@ For this deliverable I added backend endpoints that revieve workout data (weight
 - **Calls to third party endpoints** - On the login page, an inspirational quote is dynamically generated/ called from a third party endpoint.
 - **Backend service endpoints** - Placeholders for log workout data that stores the current workout on the server. Endpoints for displaying and storing this and the user's weight on the progress page.
 - **Frontend calls service endpoints** - I did this using the fetch function in my workout and progress pages.
+
+## Database deliverable
+
+For this diliverable I created an account with Mongodb atlas. I connected this account to my backend code to store values such as usernames, passwords, workout data, and user weight. 
+
+- **MongoDB Atlas database created** - done!
+- **Endpoints for data** - My stubbed out endpoints now process the data and send it to Mongo.
+- **Stores data in MongoDB** - done!
