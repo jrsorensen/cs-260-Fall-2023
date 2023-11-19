@@ -1,5 +1,11 @@
 const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
+const uuid = require('uuid');
+const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
+const express = require('express');
+const app = express();
+
 
   // Connect to the database cluster
   const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
@@ -53,8 +59,32 @@ const config = require('./dbConfig.json');
     const result = progressCollection.find();
     return result;
   }
+
+  function getUser(name) {
+    return userCollection.findOne({ username : name });
+  }
+
+  async function createUser(name, password) {
+    const passwordHash = await bcrypt.hash(password, 10);
+    const user = {
+      username: name,
+      password: passwordHash,
+      token: uuid.v4(),
+    };
+    await userCollection.insertOne(user);
   
-  module.exports = { addWorkout, addProgress, getWorkoutData, getProgress, login };
+    return user;
+  }
+  
+  function setAuthCookie(res, authToken) {
+    res.cookie('token', authToken, {
+      secure: true,
+      httpOnly: true,
+      sameSite: 'strict',
+    });
+  }
+  
+  module.exports = { addWorkout, addProgress, getWorkoutData, getProgress, login, getUser, createUser, setAuthCookie };
   
 
   // Test that you can connect to the database

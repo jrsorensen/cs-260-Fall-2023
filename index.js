@@ -35,18 +35,36 @@ apiRouter.post('/workout', async (req, res) => {
 });
 
 //Submit login
-apiRouter.get('/login', (_req, res) => {
-  res.send("logged in");
+// loginAuthorization from the given credentials
+apiRouter.post('/login', async (req, res) => {
 
+  const user = await DB.getUser(req.body[0]);
+  if (user) {
+    if (await bcrypt.compare(req.body[1], user.password)) {
+      DB.setAuthCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
+  }
+  res.status(401).send({ msg: 'Unauthorized' });
+  console.log("unauthorized");
 });
 
 //Submit login
-apiRouter.post('/login', async (req, res) =>{
-  //loginUser(req, res);
-  something = DB.login(req.body);
-  //jsonText = JSON.stringify()
-  res.send("Posting your login" + something);
-})
+apiRouter.post('/create', async (req, res) => {
+  //somehow I need to pass the req.body.username in as a string literal
+ 
+  if (await DB.getUser(req.body[0])) {
+    res.status(409).send({ msg: 'Existing user' });
+  } else {
+    const user = await DB.createUser(req.body[0], req.body[1]);
+   DB.setAuthCookie(res, user.token);
+    res.send({
+      id: user._id,
+    });
+  }
+});
+
 
 //Get body weight
 apiRouter.get('/progress', async (_req, res) => {

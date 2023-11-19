@@ -1,3 +1,5 @@
+const proceed = false;
+
 async function login() {
     const name = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
@@ -5,19 +7,24 @@ async function login() {
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: {'content-type': 'application/json'},
-        body: JSON.stringify({userame : name, password : password})
+        body: JSON.stringify([name, password])
       });
       const confirmation = await response.json();
       console.log(confirmation);
+      if (confirmation.message != 'Unauthorized'){ 
+        localStorage.setItem("userName", name);
+        localStorage.setItem("password", password);
+        welcomeMessage();
+        
+        window.location.href = "/workout.html"
+      }else{
+        alert("Username or password wrong");
+      }
     }catch{
-      console.log("error with login");
+      alert("error with login");
     }
     
-    localStorage.setItem("userName", name);
-    localStorage.setItem("password", password);
-    welcomeMessage();
-    
-    window.location.href = "/workout.html"
+   
   }
 
 function welcomeMessage() {
@@ -50,6 +57,37 @@ function displayQuote(data) {
       containerEl.appendChild(quoteEl);
       containerEl.appendChild(authorEl);
     });
+}
+
+async function registerNew() {
+  const name = document.querySelector("#username").value;
+  const password = document.querySelector("#password").value;
+  bod = [name, password];
+  try{
+    const response = await fetch('/api/create', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(bod)
+    });
+    const confirmation = await response.json();
+    if (confirmation.message != 'Existing user'){ 
+      localStorage.setItem("userName", name);
+      localStorage.setItem("password", password);
+      welcomeMessage();
+      
+      window.location.href = "/workout.html"
+    }else{
+      alert('Username is already in use');
+    }
+  }catch{
+    alert("error with registration");
+  }
+  
+  localStorage.setItem("userName", name);
+  localStorage.setItem("password", password);
+  welcomeMessage();
+  
+  window.location.href = "/workout.html"
 }
 
 displayQuote();
