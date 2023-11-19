@@ -9,9 +9,9 @@ async function login() {
         headers: {'content-type': 'application/json'},
         body: JSON.stringify([name, password])
       });
-      const confirmation = await response.json();
-      console.log(confirmation);
-      if (confirmation.message != 'Unauthorized'){ 
+      const resp = await response;
+      console.log(resp);
+      if (resp.status == 200){ 
         localStorage.setItem("userName", name);
         localStorage.setItem("password", password);
         welcomeMessage();
@@ -69,8 +69,8 @@ async function registerNew() {
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(bod)
     });
-    const confirmation = await response.json();
-    if (confirmation.message != 'Existing user'){ 
+    const confirmation = await response;
+    if (confirmation.status == 200){ 
       localStorage.setItem("userName", name);
       localStorage.setItem("password", password);
       welcomeMessage();
@@ -82,12 +82,6 @@ async function registerNew() {
   }catch{
     alert("error with registration");
   }
-  
-  localStorage.setItem("userName", name);
-  localStorage.setItem("password", password);
-  welcomeMessage();
-  
-  window.location.href = "/workout.html"
 }
 
 displayQuote();
