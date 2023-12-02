@@ -3,6 +3,7 @@ const app = express();
 const DB = require('./database.js');
 const { Db } = require('mongodb');
 const bcrypt = require('bcrypt');
+const { peerProxy } = require('./peerProxy.js');
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
