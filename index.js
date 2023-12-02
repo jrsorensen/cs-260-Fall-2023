@@ -90,10 +90,6 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
-
 // updateworkouts considers a new workout for inclusion in the high workouts.
 // The high workouts are saved in memory and disappear whenever the service is restarted.
 function updateWorkouts(newWorkout) {
