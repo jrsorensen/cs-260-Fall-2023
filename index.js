@@ -101,8 +101,8 @@ function updateWorkouts(newWorkout) {
   return weeklyWorkouts;
 }
 
-// const bodyWeightTracker = [];
-// function updateBodyWeight(bodyWeight){
-//   bodyWeightTracker.push(bodyWeight);
-//   return bodyWeightTracker;
-// }
+const httpService = app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+peerProxy(httpService);

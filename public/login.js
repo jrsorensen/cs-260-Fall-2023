@@ -1,4 +1,6 @@
 const proceed = false;
+const newLoginEvent = 'login';
+const newRegisterEvent = 'register';
 
 async function login() {
     const name = document.querySelector("#username").value;
@@ -17,6 +19,7 @@ async function login() {
         welcomeMessage();
         
         window.location.href = "/workout.html"
+        this.broadcastEvent(name, newLoginEvent);
       }else{
         alert("Username or password wrong");
       }
@@ -32,13 +35,6 @@ function welcomeMessage() {
          "! \n Are you ready to begin today's workout?"
          alert(message)
     }
-
-const notificationPlaceHolder = setInterval(myTimer,3000);
-function myTimer(){
-  const num = Math.floor(Math.random() * 500);
-  const date = new Date();
-  document.getElementById("loginNotifications").innerText = "Gym rat #" + num + " has started their workout!";
-}
 
 function displayQuote(data) {
   fetch('https://api.quotable.io/random')
@@ -76,6 +72,7 @@ async function registerNew() {
       welcomeMessage();
       
       window.location.href = "/workout.html"
+      this.broadcastEvent(name, newRegisterEvent);
     }else{
       alert('Username is already in use');
     }
@@ -85,3 +82,43 @@ async function registerNew() {
 }
 
 displayQuote();
+
+function configureWebSocket() {
+  const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+  this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+  this.socket.onopen = (event) => {
+    this.displayMsg( localStorage.getItem("username"), ' welcome! See who else is logging in.');
+  };
+  this.socket.onclose = () => {
+     this.displayMsg( 'workout', 'disconnected');
+  };
+  this.socket.onmessage = async (event) => {
+    const msg = JSON.parse(await event.data.text());
+    if (msg.type === newLoginEvent) {
+      this.displayMsg(msg.from, `has started their workout!`);
+    } else if (msg.type === newRegisterEvent) {
+      this.displayMsg(msg.from, `is starting their fitness journey!`);
+    }
+  };
+}
+
+function displayMsg(from, msg) {
+  const notificationText = document.getElementById("loginNotifications");
+  notificationText.innerHTML =
+    `<div class="event">${from} ${msg}</div>`;
+}
+
+function broadcastEvent(from, type) {
+  const event = {
+    from: from,
+    type: type
+  };
+  this.socket.send(JSON.stringify(event));
+}
+
+// const notificationPlaceHolder = setInterval(myTimer,3000);
+// function myTimer(){
+//   const num = Math.floor(Math.random() * 500);
+//   const date = new Date();
+//   document.getElementById("loginNotifications").innerText = "Gym rat #" + num + " has started their workout!";
+// }
