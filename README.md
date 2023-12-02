@@ -97,3 +97,12 @@ For this deliverable I associate the workouts with the logged in user.
 - **existing user** - Stores the workouts under the same username as used for login.
 - **Use MongoDB to store credentials** - Stores the username and their hashed password.
 - **Restricts functionality** - You cannot move to another page unless you have been properly authenitcated.
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to give users notifications when others login or register for the first time.
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - All logins display to others on the login page in real time. So if one person is about to login but someone does it before them, it will show that user two logged in or registered.
