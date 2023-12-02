@@ -87,3 +87,13 @@ For this diliverable I created an account with Mongodb atlas. I connected this a
 - **MongoDB Atlas database created** - done!
 - **Endpoints for data** - My stubbed out endpoints now process the data and send it to Mongo.
 - **Stores data in MongoDB** - done!
+- 
+
+## Login deliverable
+
+For this deliverable I associate the workouts with the logged in user.
+
+- **User registration** - Creates a new account in the database if one does not already exist.
+- **existing user** - Stores the workouts under the same username as used for login.
+- **Use MongoDB to store credentials** - Stores the username and their hashed password.
+- **Restricts functionality** - You cannot move to another page unless you have been properly authenitcated.
