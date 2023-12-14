@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+
 import { useNavigate } from 'react-router-dom';
-//import './login.css'
+import React, {useEffect} from 'react';
 
 export function Login({ userName, authState, onAuthChange }) {
   const [auth, setAuth] = React.useState(authState)
@@ -16,10 +16,10 @@ let socket;
 async function login() {
     //const name = document.querySelector("#username").value;
     //const password = document.querySelector("#password").value;
-    const name = userName;
+    const name = usersName;
     const password = password_in;
     
-    try{
+   // try{
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: {'content-type': 'application/json'},
@@ -37,11 +37,11 @@ async function login() {
       }else{
         alert("Username or password wrong");
       }
-    }catch{
-      alert("error with login");
-    }
-    navigate('/workout') //remove this. This is a cheat
-    onAuthChange(name, true) //and remove this cheat as well
+    //}catch{
+   //   alert("error with login");
+   // }
+    //navigate('/workout') //remove this. This is a cheat
+    //onAuthChange(name, true) //and remove this cheat as well
   }
 
 function welcomeMessage() {
@@ -75,10 +75,10 @@ function displayQuote(data) {
 async function registerNew() {
  // const name = document.querySelector("#username").value;
  // const password = document.querySelector("#password").value;
- const name = userName;
+ const name = usersName;
  const password = password_in;
  const bod = [name, password];
-  try{
+ // try{
     const response = await fetch('/api/create', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
@@ -95,9 +95,9 @@ async function registerNew() {
     }else{
       alert('Username is already in use');
     }
-  }catch{
-    alert("error with registration");
-  }
+//  }catch{
+//    alert("error with registration");
+//  }
 }
 
 useEffect(() => {

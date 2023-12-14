@@ -106,3 +106,13 @@ For this deliverable I used webSocket to give users notifications when others lo
 - **Frontend makes WebSocket connection** - done!
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - All logins display to others on the login page in real time. So if one person is about to login but someone does it before them, it will show that user two logged in or registered.
+
+
+## React deliverable
+
+For this deliverable I converted the application over to use React.
+
+- **Bundled and transpiled** - done!
+- **Components** - Login, workouts, progress are all components.
+- **Router** - Routing between login, voting and progress components.
+- **Hooks** - I use useEffect and useState. useState is used to store authentication in order to display headers. useEffect is used to determine when I make third party api calls. 
