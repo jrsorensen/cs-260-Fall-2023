@@ -59,13 +59,13 @@ export function Workout() {
   }
   
   function saveWorkoutData(){
-    const workout = this.gatherWorkoutData();
+    const workout = gatherWorkoutData();
     //this puts the workout in to local storage with the name of the day (chest) and then the workout info (chest, incline press 135lbs x12 x12 ...)
     localStorage.setItem(workout[0],JSON.stringify(workout));
   }
   
   async function backupWorkoutData(){
-    const workout = this.gatherWorkoutData();
+    const workout = gatherWorkoutData();
     try {
       const response = await fetch('/api/workout', {
         method: 'POST',
@@ -78,7 +78,7 @@ export function Workout() {
       //if there was an error then just track the workout on local storage
       console.log("error backing up workout");
     }finally{
-      this.saveWorkoutData();
+      saveWorkoutData();
     }
   }
   

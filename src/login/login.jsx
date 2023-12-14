@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 //import './login.css'
 
@@ -41,6 +41,7 @@ async function login() {
       alert("error with login");
     }
     navigate('/workout') //remove this. This is a cheat
+    onAuthChange(name, true) //and remove this cheat as well
   }
 
 function welcomeMessage() {
@@ -50,7 +51,9 @@ function welcomeMessage() {
 }
 
 function displayQuote(data) {
-  fetch('https://api.quotable.io/random')
+
+  
+    fetch('https://api.quotable.io/random')
     .then((response) => response.json())
     .then((data) => {
       const containerEl = document.querySelector('#quote');
@@ -63,6 +66,9 @@ function displayQuote(data) {
 
       containerEl.appendChild(quoteEl);
       containerEl.appendChild(authorEl);
+  
+
+
     });
 }
 
@@ -94,13 +100,16 @@ async function registerNew() {
   }
 }
 
-//displayQuote();
-configureWebSocket();
+useEffect(() => {
+  displayQuote();
+  configureWebSocket();
+},[]);
 
 
 function configureWebSocket() {
+  let port = window.location.port;
   const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-  socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+  socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
   socket.onopen = (event) => {
      displayMsg('Welcome!', 'See who else is logging in.');
   };
