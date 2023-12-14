@@ -85,7 +85,10 @@ export function Workout() {
   let res = [];
   async function getPrevWorkoutData(){
     try {
-      const response = await fetch('/api/workouts/'+ document.querySelector("h1").textContent);
+     // const response = await fetch('/api/workouts/'+ document.querySelector("h1").textContent);
+      const response = await fetch('/api/workouts/chest');
+
+      console.log(document.querySelector("h1").textContent);
       res = await response.json();
       console.log("success");
       console.log(res);

@@ -137,6 +137,8 @@ function broadcastEvent(from, type) {
     from: from,
     type: type
   };
+  console.log(socket);
+  console.log(JSON.stringify(event));
   socket.send(JSON.stringify(event));
 }
 
