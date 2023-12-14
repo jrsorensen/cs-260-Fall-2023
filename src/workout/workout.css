@@ -120,6 +120,10 @@ main{
     align-items: center;
 }
 
+#allExercises{
+    background-color: rgb(114, 112, 108);
+}
+
 footer{
     flex: 0 40px;
     text-align: center;   
