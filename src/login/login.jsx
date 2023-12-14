@@ -1,16 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 //import './login.css'
 
-export function Login() {
+export function Login({ userName, authState, onAuthChange }) {
+  const [auth, setAuth] = React.useState(authState)
+  const [usersName, setUserName] = React.useState(userName);
+  const [password_in, setPassword] = React.useState('');
+  const navigate = useNavigate();
 
-  const proceed = false;
+const proceed = false;
 const newLoginEvent = 'login';
 const newRegisterEvent = 'register';
 let socket;
 
 async function login() {
-    const name = document.querySelector("#username").value;
-    const password = document.querySelector("#password").value;
+    //const name = document.querySelector("#username").value;
+    //const password = document.querySelector("#password").value;
+    const name = userName;
+    const password = password_in;
+    
     try{
       const response = await fetch('/api/login', {
         method: 'POST',
@@ -23,8 +31,8 @@ async function login() {
         localStorage.setItem("userName", name);
         localStorage.setItem("password", password);
         welcomeMessage();
-        
-        window.location.href = "/workout.html"
+        onAuthChange(name, true)
+        navigate('/workout')
         broadcastEvent(name, newLoginEvent);
       }else{
         alert("Username or password wrong");
@@ -32,6 +40,7 @@ async function login() {
     }catch{
       alert("error with login");
     }
+    navigate('/workout') //remove this. This is a cheat
   }
 
 function welcomeMessage() {
@@ -58,9 +67,11 @@ function displayQuote(data) {
 }
 
 async function registerNew() {
-  const name = document.querySelector("#username").value;
-  const password = document.querySelector("#password").value;
-  bod = [name, password];
+ // const name = document.querySelector("#username").value;
+ // const password = document.querySelector("#password").value;
+ const name = userName;
+ const password = password_in;
+ const bod = [name, password];
   try{
     const response = await fetch('/api/create', {
       method: 'POST',
@@ -68,12 +79,12 @@ async function registerNew() {
       body: JSON.stringify(bod)
     });
     const confirmation = await response;
-    if (confirmation.status == 200){ 
+    if (confirmation?.status == 200){ 
       localStorage.setItem("userName", name);
       localStorage.setItem("password", password);
       welcomeMessage();
-      
-      window.location.href = "/workout.html"
+      onAuthChange(name, true)
+      navigate('/workout')
       broadcastEvent(name, newRegisterEvent);
     }else{
       alert('Username is already in use');
@@ -83,7 +94,7 @@ async function registerNew() {
   }
 }
 
-displayQuote();
+//displayQuote();
 configureWebSocket();
 
 
@@ -109,7 +120,7 @@ function configureWebSocket() {
 function displayMsg(from, msg) {
   const notificationText = document.getElementById("loginNotifications");
   notificationText.innerHTML =
-    `<div class="event">${from} ${msg}</div>`;
+    `<div className="event">${from} ${msg}</div>`;
 }
 
 function broadcastEvent(from, type) {
@@ -125,12 +136,12 @@ function broadcastEvent(from, type) {
     <main>
       <div>
           <form>
-              <label for="username">username:</label>
-              <input type="text" id="username"/><br/>
-              <label for="password">password:</label>
-              <input type="password" id="password"/><br/><br/>
-              <input type="button" class="submit" id="submit" value="Log in" onclick="login()"/>
-              <input type="button" class="submit" id="register" value="Register" onclick="registerNew()"/>
+              <label htmlFor="username">username:</label>
+              <input type="text" id="username" onChange={(e) => setUserName(e.target.value)}/><br/>
+              <label htmlFor="password">password:</label>
+              <input type="password" id="password" onChange={(e) => setPassword(e.target.value)}/><br/><br/>
+              <input type="button" className="submit" id="submit" value="Log in" onClick={() => login()}/>
+              <input type="button" className="submit" id="register" value="Register" onClick={() => registerNew()}/>
           </form>
           <p id="loginNotifications">
             This is a placeholder for where my websocket will notify the user of when other users are logging in
