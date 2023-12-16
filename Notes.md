@@ -317,6 +317,68 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
   - top-level domain: .click, root domain: bozo.click, subdomains: .banana, .fruit
 31. Is a web certificate necessary to use HTTPS?
   - Yes
+  - 
+
+  1. What ports are used for HTTP 80, HTTPS 443, SSH 22?
+2. What do HTTP status codes in the 300 redirection message, 400 client error, 500 server error range indicate?
+3. What does the HTTP header content-type allows you to do? What type of content we're dealing with like json, html, plain text, etc. Specify the content type that we're sending over HTTP
+4. What do the following attributes of a cookie do?
+• Domain - Map to what domain the cookie is coming from
+• Path - The path that the cookie was generated on. Ex. Startup.cs260.click/foo (just the /foo part)
+• SameSite - Will only return the cookie to the domain it was generated with (google to google)
+• HTTPOnly - Tells the browser to not allow JavaScript to run on the browser so it can read the cookie
+5. Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /foo/bar? - determine which functions are called and in what order bc the functions log things. Remember that the path will hit the /api use first because the /api was already defined in the file, bc it will hit that first
+6. Given the following Express service code: What does the following JavaScript fetch return? - In general, fetch requests return the results of the communication with the server. It's a front end function that returns info about a call to a server. Could be data being passed back to the client or a status code. Express service codes are the code inside whatever express functions there are. 
+7. Given the following MongoDB query
+{ cost: { $gt: 10 }, name: /fran.*/}
+select all of the matching documents. - It will return all documents with a cost greater than 10 and the name has fran with anything after it because of the wildcard "." and any number of them '*'
+8. How should you store user passwords in a database? - salted and hashed 
+9. Assuming the following Node.js service code is executing with websockets, what will be logged to the console of the web browser? - (study simon's websocket code and see what the backend code does on connect, disconnect, and message) (look for the wss.on ('connection') wss.on('message') wss.on('close')
+10. What is the WebSocket protocol used for? - It's used for making contact between the client and the server. The key aspect is instantaneous client to server connection where either the client or server can inntiate the contact. 
+11. What is JSX and how are the curly braces rendered? - JSX is a combination of JavaScript and HTML smushed together. Anything after the return is rendered to the screen. 
+12. Assuming a HTML document with a 
+<divid="root"></div>
+element, what content will the following React component generate? - three divs inside the main one with "Hello sarah" "Hello Cahal" and "Hello Edite" stacked one on top of the other.
+      function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+      }
+      function App() {
+        return (
+          <div>
+            <Welcome name="Sara" />
+            <Welcome name="Cahal" />
+            <Welcome name="Edite" />
+          </div>
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+13. Assuming a HTML document with a 
+<divid="root"></div>
+element, what content will the following React component generate? - it will list the numbers 12345 in an unordered list. (bullet pointed)
+    function Numbers() { 
+      const numbers = [1, 2, 3, 4, 5];
+      const listItems = numbers.map((number) =>
+        <li>{number}</li>
+      );
+      return(<ul>{listItems}</ul>)
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root')); 
+    root.render(<Numbers/>);
+14. What does the following React component do? - it will have a counter that will increase the count when the button is clicked. and it will re-render the the count message "You clicked ___ times"
+functionExample(){  // Declare a new state variable, which we'll call "count"  
+  const[count,setCount]=useState(0);return(<div><p>You clicked {count} times</p><button onClick={()=>setCount(count +1)}>        Click me</button></div>);}
+15. What are React Hooks used for? - They are used for modifying the state of a component. (handling the state) They also handle the lifecycle events of a component (onCreate, onDestroy)
+16. What is the useEffect hook used for? - It watches the life cycle events for the component and runs based off of those events. (such as looking for when the component is re-rendered/ rendered for the first time/ or when a variable is changed, or when a component is destroyed) (It's what updates our render)
+17. What does this code do? - This is creating the route to navigate the page (chooses what jsx its going to render on top of layout depending on what is being searched for)
+exportdefaultfunctionApp(){return(<BrowserRouter><Routes><Routepath="/"element={<Layout/>}><Routeindexelement={<Home/>}/><Routepath="blogs"element={<Blogs/>}/><Routepath="contact"element={<Contact/>}/><Routepath="*"element={<NoPage/>}/></Route></Routes></BrowserRouter>);}
+18. What role does npm play in web development? - manages your node packages and allows you to download third party stuff (download external packages and manages them)
+19. What does package.json do in a npm project? - lists all the packages that you have, you can specify scripts (like a deployment script), and it has the project name, version, description and what file to run your project with (the meta information about the project)
+20. What does the fetch function do? -  In general, fetch requests return the results of the communication with the server. It's a front end function that returns info about a call to a server. Could be data being passed back to the client or a status code. Express service codes are the code inside whatever express functions there are.
+21. What does node.js do? - runs the server (allows js to run on your server)
+22. What does Vite do? - allows you to bundle all of your code (which includes the react components) together for production so that it can be deployed for production. (allows you to deploy react to production) (transposes your jsx into regular javascript so that it can be run on a server) 
+![image](https://github.com/jrsorensen/cs-260-Fall-2023/assets/100975246/9cbbad6f-4091-4843-82b2-d56c16ccffad)
+
 32. Can a DNS A record point to an IP address or another A record?
   - an IP address
 33. Port 443, 80, 22 is reserved for which protocol?
